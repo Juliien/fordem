@@ -1,5 +1,36 @@
-<div class="sticky-top toolbar-container">
-  <mat-toolbar color="primary">
-    <span>Fordem</span>
+<div class="sticky-top">
+  <mat-toolbar>
+    <button mat-button>{{'discovery' | translate}}</button>
+
+    <span class="spacer"></span>
+    <span class="title">{{'appName' | translate}}</span>
+    <span class="spacer"></span>
+
+    <mat-icon>language</mat-icon>
+    <mat-select [(value)]="selectedLang" (selectionChange)="switchLang()">
+      <mat-option  *ngFor="let language of translate.getLangs()"
+                   [value]="language">{{ language }}</mat-option>
+    </mat-select>
+    <button mat-button class="ml-2">{{'login' | translate}}</button>
+    <button mat-flat-button color="primary" class="ml-2">{{'register' | translate}}</button>
+  </mat-toolbar>
+
+  <div class="my-3 d-flex justify-content-center">
+    OU
+  </div>
+  <!-- OU -->
+  <mat-toolbar>
+    <span class="title">{{'appName' | translate}}</span>
+    <button mat-button class="ml-2">{{'discovery' | translate}}</button>
+
+    <span class="spacer"></span>
+
+    <mat-icon>language</mat-icon>
+    <mat-select [(value)]="selectedLang" (selectionChange)="switchLang()">
+      <mat-option  *ngFor="let language of translate.getLangs()"
+                   [value]="language">{{ language }}</mat-option>
+    </mat-select>
+    <button mat-button class="ml-2">{{'login' | translate}}</button>
+    <button mat-flat-button color="primary" class="ml-2">{{'register' | translate}}</button>
   </mat-toolbar>
 </div>

@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 html, body {
   height: 100%;
@@ -7,6 +8,10 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: #E5E5E5;
+}
+
+.title {
+  font-family: 'Lobster', cursive !important;
 }
 .m-auto {
   margin: auto !important;
@@ -143,12 +148,14 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-
 .h-flex {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: baseline;
+}
+.spacer {
+  flex: 1 1 auto;
 }
 
 // Mobile
@@ -167,6 +174,3 @@ body {
     width: 1170px;
   }
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
