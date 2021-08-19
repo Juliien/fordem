@@ -1,21 +1,9 @@
-import { Component } from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  selectedLang = 'fr';
-
-  constructor(public translate: TranslateService) {
-    translate.addLangs(['fr', 'en']);
-    translate.setDefaultLang('fr');
-  }
-
-  switchLang(): void {
-    this.translate.use(this.selectedLang);
-  }
-}
+export class AppComponent { }
 

@@ -1,0 +1,16 @@
+<div class="sticky-top">
+  <mat-toolbar>
+    <span class="title" routerLink="/home">{{'appName' | translate}}</span>
+    <button mat-button class="ml-2" routerLink="/projects">{{'discovery' | translate}}</button>
+
+    <span class="spacer"></span>
+    <mat-icon>language</mat-icon>
+    <mat-select [(value)]="selectedLang" (selectionChange)="switchLang()">
+      <mat-option  *ngFor="let language of translate.getLangs()"
+                   [value]="language">{{ language }}</mat-option>
+    </mat-select>
+
+    <button mat-button routerLink="/login">{{'login' | translate}}</button>
+    <button mat-flat-button color="primary" class="ml-2" routerLink="/register">{{'register' | translate}}</button>
+  </mat-toolbar>
+</div>
