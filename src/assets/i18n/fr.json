@@ -1,6 +1,13 @@
 {
   "appName": "Fordem",
-  "register": "Inscription",
-  "login": "Connexion",
-  "discovery": "Découvrir"
+  "header": {
+    "register": "Inscription",
+    "login": "Connexion",
+    "discovery": "Découvrir"
+  },
+  "login": {
+    "title": "Connexion",
+    "email": "Email",
+    "password": "Mot de passe"
+  }
 }

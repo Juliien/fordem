@@ -1,6 +1,13 @@
 {
   "appName": "Fordem",
-  "register": "Register",
-  "login": "Log in",
-  "discovery": "Discovery"
+  "header": {
+    "register": "Register",
+    "login": "Log in",
+    "discovery": "Discovery"
+  },
+  "login": {
+    "title": "Log in",
+    "email": "Enter your email",
+    "password": "Enter your password"
+  }
 }
