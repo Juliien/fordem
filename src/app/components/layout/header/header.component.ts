@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {MatDialog} from '@angular/material/dialog';
 import {LoginComponent} from '../../authentication/login/login.component';
+import {AuthenticationService} from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent {
 
   constructor(
     public dialog: MatDialog,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public auth: AuthenticationService
   ) {
     translate.addLangs(['fr', 'en']);
     translate.setDefaultLang('fr');

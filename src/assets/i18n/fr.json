@@ -3,11 +3,21 @@
   "header": {
     "register": "Inscription",
     "login": "Connexion",
-    "discovery": "Découvrir"
+    "discovery": "Découvrir",
+    "menu": {
+      "account": "Compte",
+      "notification": "Notifications",
+      "help": "Aide",
+      "logout": "Déconnexion"
+    }
   },
   "login": {
     "title": "Connexion",
     "email": "Email",
     "password": "Mot de passe"
+  },
+  "profile": {
+    "title": "Compte",
+    "info": "Informations"
   }
 }

@@ -4,13 +4,39 @@
     <button mat-button class="ml-2" routerLink="/projects">{{'header.discovery' | translate}}</button>
 
     <span class="spacer"></span>
+
     <mat-icon>language</mat-icon>
     <mat-select [(value)]="selectedLang" (selectionChange)="switchLang()">
       <mat-option  *ngFor="let language of translate.getLangs()"
                    [value]="language">{{ language }}</mat-option>
     </mat-select>
 
-    <button mat-button (click)="openLogin()">{{'header.login' | translate}}</button>
-    <button mat-flat-button color="primary" class="ml-2" routerLink="/register">{{'header.register' | translate}}</button>
+    <button *ngIf="auth.isLogged()" mat-button [matMenuTriggerFor]="profileMenu" aria-label="profile menu">
+      {{auth.decodedToken.role}}
+    </button>
+    <mat-menu #profileMenu="matMenu" xPosition="before">
+      <button mat-menu-item routerLink="/account-settings">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>{{'header.menu.account' | translate}}</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications</mat-icon>
+        <span>{{'header.menu.notification' | translate}}</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>help</mat-icon>
+        <span>{{'header.menu.help' | translate}}</span>
+      </button>
+      <button mat-menu-item (click)="auth.logout()">
+        <mat-icon>logout</mat-icon>
+        <span>{{'header.menu.logout' | translate}}</span>
+      </button>
+    </mat-menu>
+
+    <button *ngIf="!auth.isLogged()" mat-button (click)="openLogin()">{{'header.login' | translate}}</button>
+    <button *ngIf="!auth.isLogged()" mat-flat-button color="primary"
+            class="ml-2" routerLink="/register">
+      {{'header.register' | translate}}
+    </button>
   </mat-toolbar>
 </div>

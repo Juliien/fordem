@@ -3,11 +3,21 @@
   "header": {
     "register": "Register",
     "login": "Log in",
-    "discovery": "Discovery"
+    "discovery": "Discovery",
+    "menu": {
+      "account": "Account",
+      "notification": "Notifications",
+      "help": "Help",
+      "logout": "Log out"
+    }
   },
   "login": {
     "title": "Log in",
     "email": "Enter your email",
     "password": "Enter your password"
+  },
+  "profile": {
+    "title": "Account",
+    "info": "Information"
   }
 }

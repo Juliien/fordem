@@ -23,6 +23,8 @@ import {ProjectDetailComponent} from './components/project/project-detail/projec
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ProfileComponent } from './components/profile/profile.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     RegisterComponent,
     HomeComponent,
     ProjectListComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatOptionModule,
     MatDialogModule,
     MatInputModule,
+    MatCardModule
   ],
   providers: [],
   entryComponents: [LoginComponent],

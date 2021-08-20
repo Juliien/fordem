@@ -3,11 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {RegisterComponent} from './components/authentication/register/register.component';
 import {ProjectListComponent} from './components/project/project-list/project-list.component';
+import {ProfileComponent} from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'account-settings', component: ProfileComponent },
   { path: 'projects', component: ProjectListComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
