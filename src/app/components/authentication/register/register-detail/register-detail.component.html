@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center my-5">
+  <mat-card>
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+       <mat-card-content>
+        <mat-form-field appearance="outline" class="my-1">
+          <mat-label>Association Name</mat-label>
+          <input matInput placeholder="example" id="displayName" formControlName="displayName" required>
+          <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="outline" class="my-1">
+          <mat-label>Entrer un email</mat-label>
+          <input matInput placeholder="example@example.com" id="email" formControlName="email" required>
+          <mat-icon matSuffix>mail_outline</mat-icon>
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="outline" class="my-1">
+          <mat-label>Entrer un mot de passe</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon class="visibility">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <br/>
+        <mat-checkbox color="primary" [checked]="check">
+          j'ai lu et j'accepte la <a href="https://www.gdprprivacynotice.com/" target="_blank">politique de confidentialité</a>
+        </mat-checkbox>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-flat-button color="primary" type="submit" [disabled]="accountForm.invalid">Inscription</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

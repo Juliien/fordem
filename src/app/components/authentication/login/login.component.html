@@ -4,9 +4,7 @@
     <mat-form-field appearance="outline">
       <mat-label>{{'login.email' | translate}}</mat-label>
       <input matInput placeholder="pat@example.com" id="email" formControlName="email" required>
-      <button mat-icon-button matSuffix>
-        <mat-icon matSuffix>mail_outline</mat-icon>
-      </button>
+      <mat-icon matSuffix>mail_outline</mat-icon>
     </mat-form-field>
     <br/>
     <mat-form-field appearance="outline">
@@ -20,6 +18,6 @@
     <p class="d-flex justify-content-center">{{errorMessage}}</p>
   </div>
   <div mat-dialog-actions class="d-flex justify-content-center">
-    <button mat-raised-button color="primary" type="submit">{{'login.title' | translate}}</button>
+    <button mat-flat-button color="primary" type="submit">{{'login.title' | translate}}</button>
   </div>
 </form>

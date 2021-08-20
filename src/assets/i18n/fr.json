@@ -18,6 +18,8 @@
   },
   "profile": {
     "title": "Compte",
-    "info": "Informations"
+    "info": "Informations",
+    "security": "Connexion & Sécurité",
+    "donation": "Donations"
   }
 }

@@ -1,3 +1,6 @@
 mat-card {
-  max-width: 200px;
+  width: 200px;
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -23,8 +23,12 @@ import {ProjectDetailComponent} from './components/project/project-detail/projec
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
-import { ProfileComponent } from './components/profile/profile.component';
+import {ProfileComponent} from './components/profile/profile.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { RegisterDetailComponent } from './components/authentication/register/register-detail/register-detail.component';
 
 
 @NgModule({
@@ -37,7 +41,8 @@ import {MatCardModule} from '@angular/material/card';
     HomeComponent,
     ProjectListComponent,
     ProjectDetailComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +66,10 @@ import {MatCardModule} from '@angular/material/card';
     MatOptionModule,
     MatDialogModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
   providers: [],
   entryComponents: [LoginComponent],
