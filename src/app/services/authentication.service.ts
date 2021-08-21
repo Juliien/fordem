@@ -29,8 +29,8 @@ export class AuthenticationService {
     }
   }
 
-  register(user: any): Observable<any> {
-    return this.http.post<any>(environment.baseUrl + 'register', user);
+  register(account: any): Observable<any> {
+    return this.http.post<any>(environment.baseUrl + 'auth/register', account);
   }
 
   login(credential: any): Observable<any> {

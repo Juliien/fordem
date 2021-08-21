@@ -1,8 +1,9 @@
-import { Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthenticationService} from '../../../../services/authentication.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-register-detail',
@@ -10,32 +11,39 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./register-detail.component.scss']
 })
 export class RegisterDetailComponent {
+  @Input() accountRole: string;
   hide = true;
   check = false;
   accountForm: FormGroup;
-  displayNameCtrl: FormControl;
+  nameCtrl: FormControl;
   emailCtrl: FormControl;
+  phoneCtrl: FormControl;
   passwordCtrl: FormControl;
+  roleCtrl: FormControl;
+  errorMessage: string;
 
   constructor(
     public formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router,
-    private snackBar: MatSnackBar)
-  {
-    this.displayNameCtrl = formBuilder.control('', Validators.required);
+    private snackBar: MatSnackBar
+  ) {
+    this.nameCtrl = formBuilder.control('', Validators.required);
     this.emailCtrl = formBuilder.control('', Validators.required);
     this.passwordCtrl = formBuilder.control('', Validators.required);
+    this.phoneCtrl = formBuilder.control('', Validators.required);
 
     this.accountForm = formBuilder.group({
-      displayName: this.displayNameCtrl,
+      name: this.nameCtrl,
       email: this.emailCtrl,
       password: this.passwordCtrl,
+      phoneNumber: this.phoneCtrl,
+      role: this.roleCtrl
     });
   }
 
   openSnackBar(): void {
-    this.snackBar.open('Le compte a été cree avec succès', '', {
+    this.snackBar.open('register.success', '', {
       duration: 2000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
@@ -43,18 +51,22 @@ export class RegisterDetailComponent {
   }
 
   onSubmit(): void {
-    // this.authenticationService.register(this.userForm.value).subscribe(() => {
-    //   this.openSnackBar();
-    //   const loginForm = {
-    //     "email": this.userForm.value["email"],
-    //     "password": this.userForm.value["password"]
-    //   };
-    //   this.authenticationService.login(loginForm).subscribe(user => {
-    //     this.userService.currentUser = user;
-    //     sessionStorage.setItem('token', user.token);
-    //     sessionStorage.setItem('user_id', user._id);
-    //     this.router.navigate(['home']).then();
-    //   });
-    // });
+    this.accountForm.patchValue({role: this.accountRole});
+    this.authenticationService.register(this.accountForm.value).subscribe((account) => {
+      this.openSnackBar();
+      //account service -> add currentAccount
+      const loginForm = {
+        email: this.accountForm.value.email,
+        password: this.accountForm.value.password
+      };
+      this.authenticationService.login(loginForm).subscribe(result => {
+        localStorage.setItem('token', result.token);
+        this.authenticationService.token = result.token;
+        this.authenticationService.decodedToken = this.authenticationService.decodeToken(result.token);
+        this.router.navigate(['home']).then();
+      }, (e) => {
+        this.errorMessage = e.error.message;
+      });
+    });
   }
 }
