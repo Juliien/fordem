@@ -16,6 +16,16 @@
     "email": "Enter your email",
     "password": "Enter your password"
   },
+  "register": {
+    "title": "Register",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone number",
+    "companyName": "Company name",
+    "associationName": "Association name",
+    "association": "I'm an association",
+    "company": "I'm an company"
+  },
   "profile": {
     "title": "Account",
     "info": "Information",

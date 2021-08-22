@@ -12,7 +12,7 @@
     </mat-select>
 
     <button *ngIf="auth.isLogged()" mat-button [matMenuTriggerFor]="profileMenu" aria-label="profile menu">
-      {{auth.decodedToken.role}}
+      {{auth.decodedToken.name}}
     </button>
     <mat-menu #profileMenu="matMenu" xPosition="before">
       <button mat-menu-item routerLink="/account-settings">

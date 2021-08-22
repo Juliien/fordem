@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import jwt_decode from 'jwt-decode';
 
@@ -24,7 +24,7 @@ export class AuthenticationService {
         this.decodedToken = this.decodeToken(this.token);
       }
       if (!this.isTokenValid()) {
-        // this.refreshToken().subscribe();
+         this.refreshToken();
       }
     }
   }
@@ -37,9 +37,22 @@ export class AuthenticationService {
     return this.http.post<any>(environment.baseUrl + 'auth/login', credential);
   }
 
-  // refreshToken(): Observable<any> {
-  //
-  // }
+  refreshToken(): void {
+    if (this.isLogged() && !this.isTokenValid()) {
+      const options = {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.token
+        })
+      };
+      const newToken = this.http.get<any>(environment.baseUrl + 'auth/token/refresh', options);
+      newToken.subscribe(res => {
+        this.token = res.token;
+        localStorage.clear();
+        localStorage.setItem('token', this.token);
+        this.decodedToken = this.decodeToken(this.token);
+      });
+    }
+  }
 
   logout(): void {
     this.token = null;

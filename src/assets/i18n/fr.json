@@ -16,6 +16,16 @@
     "email": "Email",
     "password": "Mot de passe"
   },
+  "register": {
+    "title": "Inscription",
+    "email": "Entrer un email",
+    "password": "Entrer un mot de passe",
+    "phone": "Numéro de téléphone",
+    "companyName": "Nom de l'entreprise",
+    "associationName": "Nom de l'association",
+    "association": "Je suis une association",
+    "company": "Je suis une entreprise"
+  },
   "profile": {
     "title": "Compte",
     "info": "Informations",

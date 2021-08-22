@@ -11,7 +11,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MatSelectModule} from '@angular/material/select';
-import {MatOptionModule} from '@angular/material/core';
+import {MatOptionModule, MatRippleModule} from '@angular/material/core';
 import {HeaderComponent} from './components/layout/header/header.component';
 import {FooterComponent} from './components/layout/footer/footer.component';
 import {LoginComponent} from './components/authentication/login/login.component';
@@ -69,7 +69,8 @@ import { RegisterDetailComponent } from './components/authentication/register/re
     MatCardModule,
     MatTabsModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRippleModule
   ],
   providers: [],
   entryComponents: [LoginComponent],
