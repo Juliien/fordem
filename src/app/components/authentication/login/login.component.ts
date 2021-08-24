@@ -32,7 +32,6 @@ export class LoginComponent {
   onSubmit(): void {
     this.authenticationService.login(this.loginForm.value).subscribe(result => {
       localStorage.setItem('token', result.token);
-      this.authenticationService.token = result.token;
       this.authenticationService.decodedToken = this.authenticationService.decodeToken(result.token);
       this.dialog.close();
     }, (e) => {

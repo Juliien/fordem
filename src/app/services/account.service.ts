@@ -15,10 +15,10 @@ export class AccountService {
   ) { }
 
   getAccountsById(): Observable<any> {
-    this.auth.refreshToken();
+    console.log(localStorage.getItem('token'));
     const options = {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + this.auth.token
+        Authorization: 'Bearer ' + this.auth.getToken()
       })
     };
     return this.http.get<any>(environment.baseUrl + 'accounts/' + this.auth.decodedToken.id, options);

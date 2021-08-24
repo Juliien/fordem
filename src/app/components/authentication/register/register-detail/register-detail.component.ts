@@ -54,14 +54,12 @@ export class RegisterDetailComponent {
     this.accountForm.patchValue({role: this.accountRole});
     this.authenticationService.register(this.accountForm.value).subscribe((account) => {
       this.openSnackBar();
-      //account service -> add currentAccount
       const loginForm = {
         email: this.accountForm.value.email,
         password: this.accountForm.value.password
       };
       this.authenticationService.login(loginForm).subscribe(result => {
         localStorage.setItem('token', result.token);
-        this.authenticationService.token = result.token;
         this.authenticationService.decodedToken = this.authenticationService.decodeToken(result.token);
         this.router.navigate(['home']).then();
       }, (e) => {

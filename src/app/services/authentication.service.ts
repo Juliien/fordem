@@ -9,7 +9,6 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  token: string;
   decodedToken: any;
 
   constructor(
@@ -17,11 +16,8 @@ export class AuthenticationService {
     private http: HttpClient
   ) {
     if (this.isLogged()) {
-      if (!this.token) {
-        this.token = localStorage.getItem('token');
-      }
       if (!this.decodedToken) {
-        this.decodedToken = this.decodeToken(this.token);
+        this.decodedToken = this.decodeToken(localStorage.getItem('token'));
       }
       if (!this.isTokenValid()) {
          this.refreshToken();
@@ -37,25 +33,27 @@ export class AuthenticationService {
     return this.http.post<any>(environment.baseUrl + 'auth/login', credential);
   }
 
-  refreshToken(): void {
+  getToken(): string {
     if (this.isLogged() && !this.isTokenValid()) {
-      const options = {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + this.token
-        })
-      };
-      const newToken = this.http.get<any>(environment.baseUrl + 'auth/token/refresh', options);
-      newToken.subscribe(res => {
-        this.token = res.token;
-        localStorage.clear();
-        localStorage.setItem('token', this.token);
-        this.decodedToken = this.decodeToken(this.token);
-      });
+      this.refreshToken().subscribe(result => {
+          localStorage.clear();
+          localStorage.setItem('token', result.token);
+          this.decodedToken = this.decodeToken(result.token);
+        });
     }
+    return localStorage.getItem('token');
+  }
+
+  refreshToken(): Observable<any> {
+    const options = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      })
+    };
+    return this.http.get<any>(environment.baseUrl + 'auth/token/refresh', options);
   }
 
   logout(): void {
-    this.token = null;
     localStorage.removeItem('token');
     this.router.navigate(['home']).then();
   }
